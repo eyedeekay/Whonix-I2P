@@ -28,10 +28,6 @@ Installing I2P**
 
 `sudo apt-key add i2p-debian-repo.key.asc`
 
-**For Whonix 13 using Debian stable:**
-
-`echo -e "deb https://deb.i2p2.de/ jessie main\\ndeb-src https://deb.i2p2.de/ jessie main" | sudo tee /etc/apt/sources.list.d/i2p-release.list > /dev/null`
-
 **For Whonix 14 using Debian Stretch**
 
 `echo -e "deb https://deb.i2p2.de/ stretch main\\ndeb-src https://deb.i2p2.de/ stretch main" | sudo tee /etc/apt/sources.list.d/i2p-release.list > /dev/null`
