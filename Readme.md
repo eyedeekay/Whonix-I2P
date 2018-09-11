@@ -1,5 +1,6 @@
 See https://forums.whonix.org/t/i2p-integration/4981 for more Informations 
 
+
 ### Preparation
 
 **Create a separate Gateway (TemplateVM&) ProxyVm and Workstation (TemplateVM&) AppVM
@@ -7,30 +8,11 @@ Installing I2P**
 ### Whonix Gateway (Template)VM
 
 
-**We’ll install I2P using the Debian packages.**
+**We’ll install I2P using the Debian-testing packages.**
 
-**Before adding the repo** https://geti2p.net/en/download/debian2, **fetch the key and verify** https://geti2p.net/_static/i2p-debian-repo.key.asc fingerprints. 
-##### Always check the fingerprint for yourself. 
-**The output at the moment is:**
+**Add the Debian-testing(buster) repo to your APT list**
 
-    pub  4096R/0x67ECE5605BCF1346 2013-10-10 I2P Debian Package Repository <killyourtv@i2pmail.org>
-          Key fingerprint = 7840 E761 0F28 B904 7535  49D7 67EC E560 5BCF 1346
-
-**Download key with scurl to home folder.**
-
-`scurl -o i2p-debian-repo.key.asc https://geti2p.net/_static/i2p-debian-repo.key.asc`
-
-**Check fingerprints/owners without importing anything.**
-
-`gpg -n --import --import-options import-show i2p-debian-repo.key.asc`
-
-**If it looks good add it to APT's Keyring**
-
-`sudo apt-key add i2p-debian-repo.key.asc`
-
-**For Whonix 14 using Debian Stretch**
-
-`echo -e "deb https://deb.i2p2.de/ stretch main\\ndeb-src https://deb.i2p2.de/ stretch main" | sudo tee /etc/apt/sources.list.d/i2p-release.list > /dev/null`
+`sudo su -c "echo -e 'deb tor+http://vwakviie2ienjx6t.onion/debian buster main' > /etc/apt/sources.list.d/testing.list"`
 
 **Update Packages**
 
@@ -38,7 +20,7 @@ Installing I2P**
 
 **Install I2P, its dependencies and (optional) iceweasel:**
 
-`sudo apt-get install i2p i2p-keyring iceweasel`
+`sudo apt-get -t buster install i2p i2p-keyring iceweasel`
 
 **Configure I2P as a service that automatically runs when your system boots, set the amount of Ram to your needs and leave the User as i2psvc**
 
@@ -48,7 +30,7 @@ Installing I2P**
 
 ```
 binds+=( '/etc/i2p' )
-binds+=( '/var/lib/i2p/i2p-config/' )
+binds+=( '/var/lib/i2p/i2p-config' )
 ```
 
 ### Whonix Gateway (Proxy)VM
@@ -107,11 +89,11 @@ router.reseedSSLRequired=false
 
 **Remove the outproxy from the tunnel on port 4444**
 
-`sed -i '/^.*tunnel\.0\.\(proxyList\|option\.i2ptunnel\.httpclient\.SSLOutproxies\)/d' "/var/lib/i2p/i2p-config/i2ptunnel.config"`
+`sudo sed -i '/^.*tunnel\.0\.\(proxyList\|option\.i2ptunnel\.httpclient\.SSLOutproxies\)/d' "/var/lib/i2p/i2p-config/i2ptunnel.config"`
 
 **Disable the https outproxy (port 4445)**
 
-`sed -i 's|^.*\(tunnel\.6\.startOnLoad\).*|\1=false|' "/var/lib/i2p/i2p-config/i2ptunnel.config"`
+`sudo sed -i 's|^.*\(tunnel\.6\.startOnLoad\).*|\1=false|' "/var/lib/i2p/i2p-config/i2ptunnel.config"`
 
 **Changing I2P’s listening interface**
 
@@ -162,6 +144,7 @@ enforce-blocks 0 to 1
 
 ```
 ~*.i2p
+~*.*.i2p
 ~.torproject.org
 ```
 
