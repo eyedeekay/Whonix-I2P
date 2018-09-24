@@ -1,5 +1,7 @@
+####This Guide isn't still a WIP
+If you find errors or problems please post them on the Whonix Forum Post.
 See https://forums.whonix.org/t/i2p-integration/4981 for more Informations 
-
+If you encounter any problem, post your log with your post (see Debug)
 
 ### Preparation
 
@@ -170,5 +172,20 @@ network.proxy.no_proxies_on;0
 network.proxy.http;127.0.0.1
 network.proxy.http_port;8118
 network.proxy.socks;         <--(blank)
+
+```
+
+### Debug
+check your wrapper & router log for any errors
+```
+sudo tail -f /var/log/i2p/wrapper.log
+sudo tail -f /var/log/i2p/log-router-0.txt
+(if log-router-0 is showing old info try log-router-1)
+
+```
+check i2p's config files
+```
+sudo nano /var/lib/i2p/i2p-config/router.config
+sudo nano /var/lib/i2p/i2p-config/clients.config
 
 ```
