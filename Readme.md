@@ -20,7 +20,7 @@ Installing I2P**
 
 **Install I2P, its dependencies and (optional) iceweasel:**
 
-`sudo apt-get -t buster install i2p i2p-keyring iceweasel`
+`sudo apt-get -t buster install i2p`
 
 **Configure I2P as a service that automatically runs when your system boots, set the amount of Ram to your needs and leave the User as i2psvc**
 
