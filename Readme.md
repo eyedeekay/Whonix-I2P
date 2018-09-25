@@ -1,7 +1,7 @@
-#### This Guide is still WIP
+### This Guide is still WIP
 If you find errors or problems please post them on the Whonix Forum Post.
 See https://forums.whonix.org/t/i2p-integration/4981 for more Informations 
-If you encounter any problem, post your log with your post (see Debug)
+#### If you encounter any problem, post your log with your post (see Debug)
 
 ### Preparation
 
