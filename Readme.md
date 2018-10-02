@@ -83,6 +83,8 @@ router.reseedSSLProxyHost=127.0.0.1
 router.reseedSSLProxyPort=9050
 router.reseedSSLProxyType=SOCKS5
 router.reseedSSLRequired=false
+time.sntpServerList=127.0.0.1
+i2np.laptopMode=true
 ```
 
 **Disable the Outproxy**
