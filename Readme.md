@@ -113,7 +113,7 @@ By the time we’re finished here, you will be able to access I2P from the works
 
 **change the Router console listening IP back to localhost**
 
-`sudo sed -i "s/clientApp\.0\.args\=7657 \:\:1\,$GATEWAYIP/clientApp\.0\.args\=7657 \:\:1\,127\.0\.0\.1 \./g" /var/lib/i2p/i2p-config/clients.config`
+`sudo sed -i "s/clientApp\.0\.args\=7657 \:\:1\,$GATEWAYIP/clientApp\.0\.args\=7657 \:\:1\,127\.0\.0\.1\./g" clients.config`
 
 ### Whonix Workstation (Template)VM
 
